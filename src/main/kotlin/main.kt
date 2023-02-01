@@ -8,8 +8,8 @@ fun trans(card: String = "VK Pay", pastTrasfers: Int = 0, transfer: Int): Int =
     when (card) {
         "MasterCard", "Maestro" -> {
             if (transfer < 150_000 && pastTrasfers + transfer <= 600_000) {
-                if (pastTrasfers + transfer < 75000) transfer
-                else (transfer * 0.94 + 20).toInt()
+                if (pastTrasfers + transfer < 75_000) 0
+                else (transfer * 0.006 + 20).toInt()
             } else -2
         }
         "Visa", "Мир" -> {
@@ -18,8 +18,8 @@ fun trans(card: String = "VK Pay", pastTrasfers: Int = 0, transfer: Int): Int =
             } else -2
         }
         "VK Pay" -> {
-            if (transfer < 150_000 && pastTrasfers + transfer <= 600_000) {
-                transfer
+            if (transfer < 15_000 && pastTrasfers + transfer <= 40_000) {
+                0
             } else -2
         }
         else -> {
